@@ -50,9 +50,21 @@ def draw_upside_down_wall(rectangle, n, window):
     and n is nonnegative.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     Some tests are already written for you (above).
     # -------------------------------------------------------------------------
+    rect = rectangle
+    rect.attach_to(window)
+    for k in range(n - 1):
+        rect = rg.Rectangle(rg.Point(rect.corner_1.x - rect.get_width()/2, rect.corner_1.y - rect.get_height()), rg.Point(rect.corner_2.x - rect.get_width()/2, rect.corner_2.y - rect.get_height()))
+        rect.attach_to(window)
+        rect2 = rect
+        for j in range(k + 1):
+            rect2 = rg.Rectangle(rg.Point(rect2.corner_1.x + rect2.get_width(), rect2.corner_1.y), rg.Point(rect2.corner_2.x + rect2.get_width(), rect2.corner_2.y))
+            rect2.attach_to(window)
+    window.render()
+
+
 
 
 # -----------------------------------------------------------------------------
